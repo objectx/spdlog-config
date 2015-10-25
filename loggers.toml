@@ -1,0 +1,34 @@
+# Logger configuration
+[[channels]]
+name = "global"
+level = "info"
+    [[channels.sinks]]
+        type = "null"
+    [[channels.sinks]]
+        type = "stderr"
+    [[channels.sinks]]
+        type = "stdout"
+    [[channels.sinks]]
+        type = "file"
+        path = "logs/file"
+    [[channels.sinks]]
+        type = "rotating-file"
+        path = "logs/log"
+        extension = "log"
+        max_size = "1024M"
+        keep = 3
+    [[channels.sinks]]
+        type = "daily-file"
+        path = "logs/daily"
+        refresh_on = "12:00"
+
+[[channels]]
+name = "depend"
+level = "debug"
+    [[channels.sinks]]
+        type = "stderr"
+    [[channels.sinks]]
+        type = "rotating-file"
+        path = "logs/log"
+        max_size = "1024M"
+        keep = 3

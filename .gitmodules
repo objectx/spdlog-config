@@ -1,0 +1,9 @@
+[submodule "ext/spdlog"]
+	path = ext/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "ext/cpptoml"]
+	path = ext/cpptoml
+	url = https://github.com/skystrife/cpptoml.git
+[submodule "ext/Catch"]
+	path = ext/Catch
+	url = https://github.com/philsquared/Catch.git
