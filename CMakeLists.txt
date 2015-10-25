@@ -19,8 +19,13 @@ setvar_default (CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 include_directories (${CMAKE_CURRENT_BINARY_DIR})
 
-set (SOURCE_FILES src/spdlog-config.cpp src/null-sink.cpp src/stdout-sink.cpp src/file-sink.cpp src/sinks.cpp)
-set (HEADER_FILES include/spdlog-config.hpp src/internal.hpp src/loglevel.cpp)
+set (SOURCE_FILES src/spdlog-config.cpp
+                  src/null-sink.cpp
+                  src/stdout-sink.cpp
+                  src/file-sink.cpp
+                  src/sinks.cpp
+                  src/loglevel.cpp)
+set (HEADER_FILES include/spdlog-config.hpp src/internal.hpp)
 
 enable_testing ()
 
