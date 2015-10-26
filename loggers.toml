@@ -1,35 +1,39 @@
 # Logger configuration
-[[channels]]
-name = "global"
-level = "info"
 pattern = "%+"
-    [[channels.sinks]]
+level = "info"
+default_sink = "default"
+
+[[sink]]
+    name = "default"
+    [[sink.output]]
         type = "null"
-    [[channels.sinks]]
-        type = "stderr"
-    [[channels.sinks]]
+    [[sink.output]]
         type = "stdout"
-    [[channels.sinks]]
+    [[sink.output]]
+        type = "stderr"
+[[sink]]
+    name = "file"
+    [[sink.output]]
         type = "file"
         path = "logs/file"
-    [[channels.sinks]]
+    [[sink.output]]
         type = "rotating-file"
-        path = "logs/log"
+        path = "logs/rotate"
         extension = "log"
         max_size = "1024M"
         keep = 3
-    [[channels.sinks]]
+    [[sink.output]]
         type = "daily-file"
         path = "logs/daily"
+        extension = "log"
         refresh_on = "12:00"
 
-[[channels]]
-name = "depend"
-level = "debug"
-    [[channels.sinks]]
-        type = "stderr"
-    [[channels.sinks]]
-        type = "rotating-file"
-        path = "logs/log"
-        max_size = "1024M"
-        keep = 3
+[[channel]]
+    name = "global"
+    level = "info"
+    sink = "default"
+
+[[channel]]
+    name = "var"
+    level = "debug"
+    sink = "file"

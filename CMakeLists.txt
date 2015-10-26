@@ -30,7 +30,7 @@ set (HEADER_FILES include/spdlog-config.hpp src/internal.hpp)
 enable_testing ()
 
 add_library (spdlog-config ${SOURCE_FILES} ${HEADER_FILES})
-    target_compile_features (spdlog-config PUBLIC cxx_auto_type)
+    target_compile_features (spdlog-config PUBLIC cxx_auto_type cxx_generic_lambdas)
     target_include_directories (spdlog-config
             PUBLIC ${PROJECT_SOURCE_DIR}/include
             PRIVATE ${PROJECT_SOURCE_DIR}/ext/spdlog/include
