@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
-
+#include <spdlog/spdlog.h>
 #include <spdlog-config.hpp>
 
 static const char * toml_text [] =

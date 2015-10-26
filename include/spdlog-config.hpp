@@ -12,8 +12,13 @@
 #include <string>
 #include <iosfwd>
 #include <tuple>
-#include <spdlog/spdlog.h>
+#include <memory>
 
+namespace cpptoml {
+    class table ;
+}
+
+extern void configure_logger (std::shared_ptr<cpptoml::table> toml) ;
 extern void configure_logger (std::istream &input) ;
 extern bool configure_logger (const std::string &file, bool ignore_missing_file = false) ;
 
