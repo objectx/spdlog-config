@@ -36,4 +36,4 @@ add_library (spdlog-config ${SOURCE_FILES} ${HEADER_FILES})
             PRIVATE ${PROJECT_SOURCE_DIR}/ext/spdlog/include
                     ${PROJECT_SOURCE_DIR}/ext/cpptoml/include)
 
-add_subdirectory (test)
+add_subdirectory (test EXCLUDE_FROM_ALL)

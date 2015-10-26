@@ -15,6 +15,6 @@
 #include <spdlog/spdlog.h>
 
 extern void configure_logger (std::istream &input) ;
-extern void configure_logger (const std::string &file) ;
+extern bool configure_logger (const std::string &file, bool ignore_missing_file = false) ;
 
 #endif /* spdlog_config_hpp__3E367102_1064_40E2_A799_6E6DC69F87A1 */
