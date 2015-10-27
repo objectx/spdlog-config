@@ -9,6 +9,10 @@
 #include "spdlog-config.hpp"
 #include "internal.hpp"
 
+#ifdef _MSC_VER
+#define strncasecmp strnicmp
+#endif
+
 namespace spdlog_config { namespace detail {
     spdlog::level::level_enum parse_log_level (const std::string & s) {
         struct level_desc_t {
