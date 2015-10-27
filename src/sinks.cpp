@@ -16,7 +16,10 @@ namespace spdlog_config { namespace detail {
                                                              , { "file"         , create_file_sink }
                                                              , { "rotating-file", create_rotating_file_sink }
                                                              , { "daily-file"   , create_daily_file_sink }};
-        auto const & type_name = toml->get_as<std::string> ("type").value_or ("null");
+        auto typ = toml->get_as<std::string> ("type") ;
+        auto const &    type_name = typ.value_or ("null") ;
+        // MEMO: We can write above lines like below, but VC++2015 returns "" :-(
+        //auto const & type_name = toml->get_as<std::string> ("type").value_or ("null");
         auto it = sinks.find (type_name);
         if (it == sinks.cend ()) {
             throw std::runtime_error (
