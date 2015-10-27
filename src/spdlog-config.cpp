@@ -111,7 +111,8 @@ void configure_logger (std::istream &input) {
 
 bool configure_logger (const std::string & file, bool ignore_missing_file) {
     std::ifstream   input { file } ;
-    if (input.bad ()) {
+
+    if (! input.good ()) {
         if (ignore_missing_file) {
             return false ;
         }
