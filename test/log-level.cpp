@@ -29,15 +29,17 @@ SCENARIO ("Parse log level string", "[log-level]") {
     }}}
 
     GIVEN ("Abbreviated level string \"e\"") {
+        std::string lv_str { "e" } ;
     WHEN ("Try to parse") {
+        auto lv = parse_log_level ("e") ;
     THEN ("Throws std::runtime_error") {
-        REQUIRE_THROWS_AS (parse_log_level ("e"), std::runtime_error) ;
+        REQUIRE (lv == spdlog::level::err) ;
     }}}
 
     GIVEN ("Level strings") {
     WHEN ("Try to parse") {
     THEN ("Should be parsed correctly") {
-        for (int i = 0 ; i <= 9 ; ++i) {
+        for (int i = 0 ; i <= spdlog::level::off ; ++i) {
             auto lv = static_cast<spdlog::level::level_enum> (i) ;
             std::string long_names { spdlog::level::to_str (lv) } ;
             REQUIRE (parse_log_level (long_names) == lv) ;
