@@ -27,8 +27,8 @@ namespace spdlog_config { namespace detail {
                 }
                 if (0 <= found) {
                     throw std::runtime_error { std::string { "Log level \"" }
-                                                       .append (s)
-                                                       .append ("\" is ambiguous.") };
+                                               .append (s)
+                                               .append ("\" is ambiguous.") };
                 }
                 found = i ;
             }

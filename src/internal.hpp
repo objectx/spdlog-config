@@ -18,6 +18,9 @@
 #include <string>
 #include <spdlog/spdlog.h>
 #include <cpptoml.h>
+#include <spdlog/sinks/null_sink.h>
+#include <spdlog/sinks/stdout_sinks.h>
+#include <spdlog/sinks/ostream_sink.h>
 
 namespace spdlog_config { namespace detail {
 

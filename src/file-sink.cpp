@@ -12,7 +12,7 @@ namespace spdlog_config { namespace detail {
     spdlog::sink_ptr create_file_sink (std::shared_ptr<cpptoml::table> toml) {
         auto path = toml->get_as<std::string> ("path");
         if (!path) {
-            throw std::runtime_error ("Missing log file path for rotating file sink");
+            throw std::runtime_error { "Missing log file path for rotating file sink" };
         }
         return std::make_shared<spdlog::sinks::simple_file_sink_mt> (*path);
     }
@@ -20,7 +20,7 @@ namespace spdlog_config { namespace detail {
     spdlog::sink_ptr create_rotating_file_sink (std::shared_ptr<cpptoml::table> toml) {
         auto path = toml->get_as<std::string> ("path");
         if (!path) {
-            throw std::runtime_error ("Missing log file path for rotating file sink");
+            throw std::runtime_error { "Missing log file path for rotating file sink" } ;
         }
         auto ext      = toml->get_as<std::string> ("extension").value_or ("log");
         auto max_size = toml->get_as<std::string> ("max_size").value_or ("1M");
@@ -31,7 +31,7 @@ namespace spdlog_config { namespace detail {
     spdlog::sink_ptr create_daily_file_sink (std::shared_ptr<cpptoml::table> toml) {
         auto path = toml->get_as<std::string> ("path");
         if (!path) {
-            throw std::runtime_error ("Missing log file path for daily file sink");
+            throw std::runtime_error { "Missing log file path for daily file sink" } ;
         }
         auto ext     = toml->get_as<std::string> ("extension").value_or ("log");
         auto refresh = toml->get_as<std::string> ("refresh_on").value_or ("00:00");
@@ -43,7 +43,7 @@ namespace spdlog_config { namespace detail {
 
     size_t parse_size (const std::string & s) {
         static const std::regex rx { "^\\s*(\\d+)\\s*(k|m|g)?$"
-                                     , std::regex_constants::ECMAScript | std::regex_constants::icase };
+                                   , std::regex_constants::ECMAScript | std::regex_constants::icase };
         std::smatch             m;
         if (!std::regex_match (s, m, rx)) {
             throw std::runtime_error { std::string { "Bad size specifier \"" }.append (s).append ("\".") };

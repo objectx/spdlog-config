@@ -22,8 +22,7 @@ namespace spdlog_config { namespace detail {
         //auto const & type_name = toml->get_as<std::string> ("type").value_or ("null");
         auto it = sinks.find (type_name);
         if (it == sinks.cend ()) {
-            throw std::runtime_error (
-                    std::string { "Unknown sink type \"" }.append (type_name).append ("\" found."));
+            throw std::runtime_error { std::string { "Unknown sink type \"" }.append (type_name).append ("\" found.") };
         }
         return it->second (toml);
     }
