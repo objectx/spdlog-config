@@ -29,11 +29,15 @@ set (HEADER_FILES include/spdlog-config.hpp src/internal.hpp)
 
 enable_testing ()
 
-add_library (spdlog-config ${SOURCE_FILES} ${HEADER_FILES})
-    target_compile_features (spdlog-config PUBLIC cxx_auto_type cxx_generic_lambdas)
-    target_include_directories (spdlog-config
+function (make_library name_)
+    add_library (${name_} ${SOURCE_FILES} ${HEADER_FILES})
+    target_compile_features (${name_} PUBLIC cxx_auto_type cxx_generic_lambdas)
+    target_include_directories (${name_}
             PUBLIC ${PROJECT_SOURCE_DIR}/include
             PRIVATE ${PROJECT_SOURCE_DIR}/ext/spdlog/include
                     ${PROJECT_SOURCE_DIR}/ext/cpptoml/include)
+endfunction ()
+
+make_library (spdlog-config)
 
 add_subdirectory (test EXCLUDE_FROM_ALL)
